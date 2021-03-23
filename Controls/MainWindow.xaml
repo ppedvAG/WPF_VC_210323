@@ -9,7 +9,7 @@
         Title="MainWindow" Height="698" Width="439"
         Background="LightBlue">
 
-    <StackPanel>
+    <StackPanel Margin="10, 20, 30, 40">
         <!--Labels besitzen, wie die meisten Controls und alle Container eine Content-Eigenschaft, welche
         mit weiteren Containern/Controls befüllt werden können (Auch hier darf nur ein Root-Element vohanden sein).-->
         <Label x:Name="Lbl_Output"
@@ -18,7 +18,8 @@
                FontSize="25"
                BorderBrush="Black"
                BorderThickness="1"
-               HorizontalContentAlignment="Center"/>
+               HorizontalContentAlignment="Center"
+               Padding="30, 20"/>
 
         <!--TextBlöcke sind Labels, welche auf Strings spezialisiert sind. Sie besitzen statt der
             Content- die Text-Property-->
@@ -43,7 +44,16 @@
                  Height="60"
                  AcceptsReturn="True"
                  AcceptsTab="True"
-                 TextWrapping="WrapWithOverflow"/>
+                 TextWrapping="WrapWithOverflow"
+                 VerticalScrollBarVisibility="Visible">
+            <TextBox.ContextMenu>
+                <!--Die meisten Steuerelemente haben eine ContextMenu-Property, in welche ein ContextMenu eingepflegt werden kann (vgl. Menu).-->
+                <ContextMenu>
+                    <MenuItem Header="Kopieren"/>
+                    <MenuItem Header="Einfügen"/>
+                </ContextMenu>
+            </TextBox.ContextMenu>
+        </TextBox>
 
         <!--ItemControls wie ComboBoxen oder ListViews können über die ItemsSource-Property mit Daten 
         oder in XAML mit Items mit Content-Property bestückt werden-->
