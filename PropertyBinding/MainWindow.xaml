@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PropertyBinding"
         mc:Ignorable="d"
         Title="MainWindow" Height="303" Width="476">
-    
+
     <!--Durch Bindings können Properties von XAML-Objekten mit anderen XAML-Properties oder Daten verknüpft werden.
     Bindings werden immer in der Ziel-Property definiert.-->
     <!--Die Binding-Property ElementName definiert das Quellen-Element in dem aktuellen XAML.Dokument.
@@ -36,7 +36,7 @@
             <!--Mode=OneWay stellt die Bindung für die Richtung Quelle->Ziel her-->
             <TextBox Width="80" Text="{Binding ElementName=Sdr_Zwei, Path=Value, Mode=OneWay}"/>
         </StackPanel>
-        
+
         <StackPanel Orientation="Horizontal">
             <Slider x:Name="Sdr_Drei"
                     Width="300"
@@ -56,9 +56,9 @@
                      LostFocus="Tbx_Zwei_LostFocus"/>
             <Button Content="Aktualisieren" Click="Button_Click"/>
         </StackPanel>
-        
+
         <StackPanel>
-            
+
             <!--ValueConverter-->
 
             <Slider x:Name="Sdr_Rot" Minimum="0" Maximum="255" Value="0"/>
@@ -77,6 +77,20 @@
                     </Rectangle.Fill>
                 </Rectangle>
             </Border>
+        </StackPanel>
+
+        <!--Bsp für integrierten BooleanToVisibilityConverter-->
+        <StackPanel Orientation="Horizontal">
+            <CheckBox x:Name="Cbx_Visibility" Content="IsVisible?" Margin="5" IsChecked="True"/>
+            <TextBlock Text="HALLO" Margin="5">
+                <TextBlock.Visibility>
+                    <Binding ElementName="Cbx_Visibility" Path="IsChecked">
+                        <Binding.Converter>
+                            <BooleanToVisibilityConverter/>
+                        </Binding.Converter>
+                    </Binding>
+                </TextBlock.Visibility>
+            </TextBlock>
         </StackPanel>
     </StackPanel>
 </Window>
