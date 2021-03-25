@@ -7,9 +7,10 @@
         mc:Ignorable="d"
         
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:uc="clr-namespace:UserControls;assembly=UserControls"
         
         Title="Neue Person" 
-        Height="287" Width="300" 
+        Height="344" Width="300" 
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen" 
         Topmost="True"
@@ -47,6 +48,22 @@
                             MethodName="GetProperties"
                             ObjectInstance="{StaticResource Odp_Colors}"/>
 
+        <ControlTemplate x:Key="CtpError">
+            <StackPanel Orientation="Horizontal">
+                <Border BorderBrush="Red" BorderThickness="1" x:Name="BdrAep">
+                    <AdornedElementPlaceholder x:Name="Aep"/>
+                </Border>
+                <TextBlock Text="!" Foreground="Red" FontSize="{StaticResource Dbl_Fontsize}"
+                           Margin="3,0" FontWeight="Bold" VerticalAlignment="Center"/>
+                <Popup AllowsTransparency="True" PopupAnimation="Slide"
+                       PlacementTarget="{Binding ElementName=BdrAep}" Placement="Bottom"
+                       IsOpen="{Binding ElementName=Aep, Path=AdornedElement.IsMouseOver, Mode=OneWay}">
+                    <TextBlock Text="{Binding ElementName=Aep, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}"
+                               Foreground="White" Background="Red" Padding="2" FontSize="{StaticResource Dbl_Fontsize}"/>
+                </Popup>
+            </StackPanel>
+        </ControlTemplate>
+        
     </Window.Resources>
 
     <Grid Margin="10">
@@ -55,6 +72,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -78,15 +96,21 @@
 
         <TextBox x:Name="Tbx_Vorname"
                  Grid.Column="1"
-                 Text="{Binding Vorname}"/>
+                 Text="{Binding Vorname, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                 
+                 Validation.ErrorTemplate="{StaticResource CtpError}"/>
 
         <TextBox x:Name="Tbx_Nachname"
                  Grid.Column="1" Grid.Row="1"
-                 Text="{Binding Nachname}"/>
+                 Text="{Binding Nachname, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                 
+                 Validation.ErrorTemplate="{StaticResource CtpError}"/>
 
         <DatePicker x:Name="Dpr_Geburtsdatum"
                     Grid.Column="1" Grid.Row="2"
-                    SelectedDate="{Binding Geburtsdatum}"/>
+                    SelectedDate="{Binding Geburtsdatum, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                    
+                    Validation.ErrorTemplate="{StaticResource CtpError}"/>
 
         <CheckBox x:Name="Cbx_Verheiratet"
                   Grid.Column="1" Grid.Row="3"
@@ -97,9 +121,10 @@
                   VerticalAlignment="Center"
                   Margin="2"
                   
-                  SelectedValue="{Binding Lieblingsfarbe}"
-                  SelectedValuePath="Name"
+                  Validation.ErrorTemplate="{StaticResource CtpError}"
                   
+                  SelectedValue="{Binding Lieblingsfarbe, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                  SelectedValuePath="Name"
                   ItemsSource="{Binding Source={StaticResource Odp_ColorsProperties}}">
             
             <ComboBox.ItemTemplate>
@@ -129,11 +154,40 @@
 
         </StackPanel>
 
-        <WrapPanel Grid.Row="6" Grid.ColumnSpan="2"
+        <uc:IntegerUpDown x:Name="Iud_Kinder" 
+                          Grid.Row="6" Grid.Column="1" Margin="2"
+                          Value="{Binding Kinder, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, ValidatesOnDataErrors=True}"
+                          Validation.ErrorTemplate="{StaticResource CtpError}"/>
+
+        <WrapPanel Grid.Row="7" Grid.ColumnSpan="2"
                    HorizontalAlignment="Right" Margin="0,5">
+            
             <Button x:Name="Btn_Ok"
                     Content="OK"
-                    Click="Btn_Ok_Click"/>
+                    Click="Btn_Ok_Click">
+                <Button.Style>                    
+                    <Style TargetType="Button" BasedOn="{StaticResource Sty_Btn_Base}">
+
+                        <Setter Property="IsEnabled" Value="False"/>
+
+                        <Style.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding ElementName=Tbx_Vorname, Path=(Validation.HasError)}" Value="False"/>
+                                    <Condition Binding="{Binding ElementName=Tbx_Nachname, Path=(Validation.HasError)}" Value="False"/>
+                                    <Condition Binding="{Binding ElementName=Dpr_Geburtsdatum, Path=(Validation.HasError)}" Value="False"/>
+                                    <Condition Binding="{Binding ElementName=Cbb_Lieblingsfarbe, Path=(Validation.HasError)}" Value="False"/>
+                                    <Condition Binding="{Binding ElementName=Iud_Kinder, Path=(Validation.HasError)}" Value="False"/>
+                                </MultiDataTrigger.Conditions>
+
+                                <Setter Property="IsEnabled" Value="True"/>
+
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            
             <Button x:Name="Btn_Abbruch"
                     Content="Abbrechen"/>
         </WrapPanel>

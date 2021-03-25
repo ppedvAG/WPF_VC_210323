@@ -25,6 +25,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "M08_Templates", "Templates\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "M09_Validation", "Validation\M09_Validation.csproj", "{8921D82E-7A36-4DA4-BE4A-5D203292DCD3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "M10_Trigger", "Trigger\M10_Trigger.csproj", "{893284FD-0023-41A8-9D7A-4740D5B550E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "M11_UserControls", "UserControls\M11_UserControls.csproj", "{A7FB7D49-BE08-436C-9998-B324D8627529}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +79,14 @@ Global
 		{8921D82E-7A36-4DA4-BE4A-5D203292DCD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8921D82E-7A36-4DA4-BE4A-5D203292DCD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8921D82E-7A36-4DA4-BE4A-5D203292DCD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{893284FD-0023-41A8-9D7A-4740D5B550E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{893284FD-0023-41A8-9D7A-4740D5B550E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{893284FD-0023-41A8-9D7A-4740D5B550E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{893284FD-0023-41A8-9D7A-4740D5B550E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7FB7D49-BE08-436C-9998-B324D8627529}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7FB7D49-BE08-436C-9998-B324D8627529}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7FB7D49-BE08-436C-9998-B324D8627529}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7FB7D49-BE08-436C-9998-B324D8627529}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

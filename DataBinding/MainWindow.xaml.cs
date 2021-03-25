@@ -52,7 +52,7 @@ namespace DataBinding
             Personenliste.Add(new Person() { Vorname = "Sarah", Nachname = "Meier", Alter = 12 });
         }
 
-        private void Btn_Löschen_Click(object sender, RoutedEventArgs e)
+        private void Btn_Loeschen_Click(object sender, RoutedEventArgs e)
         {
             //Löschen der in dem ListView angewählten Person
             if (Lbx_Personen.SelectedItem is Person)
