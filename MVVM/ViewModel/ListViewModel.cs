@@ -71,7 +71,10 @@ namespace MVVM.ViewModel
                     {
                         if (MessageBox.Show("Soll diese Person wirklich gelöscht werden?", $"{(p as Person).Vorname} {(p as Person).Nachname} löschen?", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
                             Personenliste.Remove(p as Person);
-                    }
+                    },
+                   //CanExe: Kann ausgeführt werden, wenn der Parameter (der im DataGrid ausgewählte Eintrag) eine Person ist.
+                   //Fungiert als Null-Prüfung
+                   p => p is Person
                 );
 
             //Schließen des Programms
