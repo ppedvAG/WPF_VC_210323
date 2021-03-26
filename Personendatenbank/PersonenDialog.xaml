@@ -93,6 +93,8 @@
                    Grid.Row="4"/>
         <TextBlock Text="Geschlecht:" 
                    Grid.Row="5"/>
+        <TextBlock Text="Anzahl Kinder:" 
+                   Grid.Row="6"/>
 
         <TextBox x:Name="Tbx_Vorname"
                  Grid.Column="1"
@@ -189,7 +191,8 @@
             </Button>
             
             <Button x:Name="Btn_Abbruch"
-                    Content="Abbrechen"/>
+                    Content="Abbrechen"
+                    Click="Btn_Abbruch_Click"/>
         </WrapPanel>
     </Grid>
 </Window>
