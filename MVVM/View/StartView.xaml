@@ -7,7 +7,8 @@
         xmlns:vm="clr-namespace:MVVM.ViewModel"
         mc:Ignorable="d"
         Title="Personendatenbank" Height="162" Width="317"
-        x:Name="Wnd_Start">
+        x:Name="Wnd_Start"
+        Style="{StaticResource Sty_Wnd}">
 
     <!--Im View-Teil von MVVM-Projekten werden die Fenster per XAML definiert. Diese Klassen dürfen keinen Code-Behind
     besitzen. Diese Aufgabe wird von dem entsprechenden ViewModel übernommen, welches als DataContext des Views gesetzt

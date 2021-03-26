@@ -4,6 +4,12 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
+    <AssemblyName>Personendatenbank</AssemblyName>
+    <RootNamespace>Personendatenbank</RootNamespace>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\UserControls\M11_UserControls.csproj" />
+  </ItemGroup>
 
 </Project>
