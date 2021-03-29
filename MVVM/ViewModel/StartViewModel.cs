@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace MVVM.ViewModel
 {
@@ -41,13 +42,18 @@ namespace MVVM.ViewModel
                     //Exe:
                     p =>
                     {
-                        //Öffnen des nächsten Views und Zuweisung des ViewModels erfolgt in Lab_14
-                        new View.ListView().Show();
+                        //Instanzierung eines neunen ListViews
+                        View.ListView db_Ansicht = new View.ListView();
+
+                        (db_Ansicht.DataContext as ListViewModel).ContextWindow = db_Ansicht;
+
+                        //Anzeigen des neuen ListViews
+                        db_Ansicht.Show();
                         //Schließen dieses Fensters (welches über den CommandParameter übergeben wurde)
                         (p as Window).Close();
                     },
                     //CanExe: Cmd kann ausgeführt werden, wenn die Anzahl der geladenen Personen > 0 ist
-                    p => AnzahlPersonen >= 1
+                    p => AnzahlPersonen > 0
                 );
         }
 

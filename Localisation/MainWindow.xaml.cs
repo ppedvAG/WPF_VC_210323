@@ -28,10 +28,17 @@ namespace Localisation
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US");
+            //Testen der aktuellen Sprache
+            if (Thread.CurrentThread.CurrentUICulture.Name == "en-US")
+                //Ändern der Sprache
+                Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("de-DE");
+            else
+                Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US");
 
+            //Neu-Öffnen des aktuellen Fensters (mit neuer Sprache)
             new MainWindow().Show();
 
+            //Schließen des alten Fensters
             this.Close();
         }
     }

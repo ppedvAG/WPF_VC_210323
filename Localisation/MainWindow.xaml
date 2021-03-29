@@ -8,8 +8,12 @@
         Title="MainWindow" Height="252" Width="284"
         
         xmlns:loc="clr-namespace:Localisation.Loc">
+    <!--An resx-Dateien wird über die x:Static-Bindung angebunden. Die resx-Dateien müssen
+        auf public gesetzt werden, damit Xaml darauf zugreifen kann-->
     <StackPanel>
         <Button Content="{x:Static loc:Strings.Btn_Content}" Click="Button_Click"/>
         <TextBlock Text="{x:Static loc:Strings.Tbl_Text}"/>
     </StackPanel>
+    
+    <!--Für Lab15-Lösung siehe MVVM/ListView + ListViewModel + App-->
 </Window>

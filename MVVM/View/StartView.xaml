@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MVVM.View"
         xmlns:vm="clr-namespace:MVVM.ViewModel"
+        xmlns:uc="clr-namespace:UserControls;assembly=UserControls"
         mc:Ignorable="d"
-        Title="Personendatenbank" Height="162" Width="317"
+        Title="Personendatenbank" Height="228" Width="317"
         x:Name="Wnd_Start"
         Style="{StaticResource Sty_Wnd}">
 
@@ -27,7 +28,14 @@
             Close-Methode ausgeführt werden kann.-->
             <Button Content="Öffne DB" Command="{Binding OeffneDbCmd}" CommandParameter="{Binding ElementName=Wnd_Start}"/>
         </WrapPanel>
-
         <TextBlock Text="{Binding AnzahlPersonen, StringFormat=Es wurden {0} Personen geladen.}" HorizontalAlignment="Center"/>
+        <uc:Juggler HorizontalAlignment="Center">
+            <uc:Juggler.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="0.4" ScaleY="0.4"/>
+                    <TranslateTransform X="-20"/>
+                </TransformGroup>
+            </uc:Juggler.RenderTransform>
+        </uc:Juggler>
     </StackPanel>
 </Window>
